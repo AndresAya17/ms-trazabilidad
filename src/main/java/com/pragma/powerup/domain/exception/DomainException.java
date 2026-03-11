@@ -1,7 +1,13 @@
 package com.pragma.powerup.domain.exception;
 
+import lombok.Getter;
+
+@Getter
 public class DomainException extends RuntimeException {
-    public DomainException(String message) {
+    private final ErrorCode errorCode;
+
+    public DomainException(ErrorCode errorCode, String message) {
         super(message);
+        this.errorCode = errorCode;
     }
 }
