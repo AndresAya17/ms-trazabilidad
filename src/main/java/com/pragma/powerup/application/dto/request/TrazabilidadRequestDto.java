@@ -31,10 +31,8 @@ public class TrazabilidadRequestDto {
     @NotBlank(message = "New status is required")
     private String newStatus;
 
-    @NotNull(message = "Employee id is required")
     private Long employeeId;
 
-    @NotBlank(message = "Employee email is required")
     @Email(message = "Employee email must be valid")
     private String employeeEmail;
 }

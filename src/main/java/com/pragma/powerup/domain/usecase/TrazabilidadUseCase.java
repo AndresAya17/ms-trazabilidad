@@ -3,6 +3,7 @@ package com.pragma.powerup.domain.usecase;
 import com.pragma.powerup.domain.api.ITrazabilidadServicePort;
 import com.pragma.powerup.domain.model.Trazabilidad;
 import com.pragma.powerup.domain.spi.ITrazabilidadPersistencePort;
+import com.pragma.powerup.domain.validator.TrazabilidadDomainValidator;
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class TrazabilidadUseCase implements ITrazabilidadServicePort {
 
     @Override
     public void saveLogs(Trazabilidad trazabilidad) {
-        //crear validator de modelo
+        TrazabilidadDomainValidator.validate(trazabilidad);
         trazabilidadPersistencePort.saveLogs(trazabilidad);
     }
 
