@@ -1,15 +1,12 @@
 server:
-  port: 8081
+  port: 8083
 
 spring:
-  datasource:
-    url: jdbc:mysql://localhost:3306/powerup
-    username: root
-    password: 1234
+  application:
+    name: ms-trazabilidad
+  data:
+    mongodb:
+      uri: mongodb+srv://andresfelipeaya17_db_user:Ankelino17.@cluster0.jscsuat.mongodb.net/Trazabilidad?retryWrites=true&w=majority&appName=Cluster0
 
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-appDescription: "Pragma Powerup"
+appDescription: "Pragma Ms-Trazabilidad"
 appVersion: "1.0.0"
