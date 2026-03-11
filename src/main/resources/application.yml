@@ -6,7 +6,7 @@ spring:
     name: ms-trazabilidad
   data:
     mongodb:
-      uri: mongodb+srv://andresfelipeaya17_db_user:Ankelino17.@cluster0.jscsuat.mongodb.net/Trazabilidad?retryWrites=true&w=majority&appName=Cluster0
+      uri: ${MONGODB_URI}
 
 appDescription: "Pragma Ms-Trazabilidad"
 appVersion: "1.0.0"
