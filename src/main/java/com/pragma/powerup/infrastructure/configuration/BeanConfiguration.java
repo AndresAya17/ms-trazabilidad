@@ -1,6 +1,8 @@
 package com.pragma.powerup.infrastructure.configuration;
 
 import com.pragma.powerup.domain.api.ITrazabilidadServicePort;
+import com.pragma.powerup.domain.spi.IOrderPersistencePort;
+import com.pragma.powerup.domain.spi.IRestaurantPersistencePort;
 import com.pragma.powerup.domain.spi.ITrazabilidadPersistencePort;
 import com.pragma.powerup.domain.usecase.TrazabilidadUseCase;
 import com.pragma.powerup.infrastructure.out.jpa.adapter.TrazabilidadJpaAdapter;
@@ -23,8 +25,9 @@ public class BeanConfiguration {
     }
 
     @Bean
-    public ITrazabilidadServicePort trazabilidadServicePort(ITrazabilidadPersistencePort trazabilidadPersistencePort){
-        return new TrazabilidadUseCase(trazabilidadPersistencePort);
+    public ITrazabilidadServicePort trazabilidadServicePort(ITrazabilidadPersistencePort trazabilidadPersistencePort,
+                                                            IOrderPersistencePort orderPersistencePort, IRestaurantPersistencePort restaurantPersistencePort){
+        return new TrazabilidadUseCase(trazabilidadPersistencePort,orderPersistencePort,restaurantPersistencePort);
     }
 
 }

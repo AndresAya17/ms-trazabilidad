@@ -7,4 +7,5 @@ import java.util.List;
 public interface ITrazabilidadPersistencePort {
     void saveLogs(Trazabilidad trazabilidad);
     List<Trazabilidad> getLogsByClientId(String clientId);
+    List<Trazabilidad> findByOrderIds(List<Long> orderIds);
 }

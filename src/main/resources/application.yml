@@ -1,6 +1,10 @@
 server:
   port: 8083
 
+plazoleta:
+  service:
+    url: http://localhost:8080
+
 spring:
   application:
     name: ms-trazabilidad
