@@ -26,4 +26,12 @@ public class TrazabilidadJpaAdapter implements ITrazabilidadPersistencePort {
                 .map(trazabilidadEntityMapper::toModel)
                 .toList();
     }
+
+    @Override
+    public List<Trazabilidad> findByOrderIds(List<Long> orderIds) {
+        return trazabilidadRepository.findByOrderIdInOrderByDateAsc(orderIds)
+                .stream()
+                .map(trazabilidadEntityMapper::toModel)
+                .toList();
+    }
 }

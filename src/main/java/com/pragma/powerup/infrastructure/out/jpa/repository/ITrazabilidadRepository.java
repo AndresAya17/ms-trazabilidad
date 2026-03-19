@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface ITrazabilidadRepository extends MongoRepository<TrazabilidadEntity, String> {
     List<TrazabilidadEntity> findAllByClientIdOrderByDateDesc(String clientId);
+    List<TrazabilidadEntity> findByOrderIdInOrderByDateAsc(List<Long> orderIds);
 }
