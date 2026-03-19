@@ -14,8 +14,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -83,6 +83,32 @@ public class TrazabilidadJpaAdapterTest {
         assertEquals(2, result.size());
         assertSame(trazabilidad1, result.get(0));
         assertSame(trazabilidad2, result.get(1));
+    }
+
+    @Test
+    void shouldFindByOrderIdsSuccessfully() {
+        // Arrange
+        List<Long> orderIds = List.of(1L, 2L);
+        TrazabilidadEntity entity = new TrazabilidadEntity(); // Asume que existe tu clase Entity
+        Trazabilidad model = new Trazabilidad();             // Asume que existe tu clase de Dominio
+
+        // Mock del repositorio devolviendo una lista con una entidad
+        when(trazabilidadRepository.findByOrderIdInOrderByDateAsc(orderIds))
+                .thenReturn(List.of(entity));
+
+        // Mock del mapper transformando la entidad a modelo
+        when(trazabilidadEntityMapper.toModel(entity)).thenReturn(model);
+
+        // Act
+        List<Trazabilidad> result = trazabilidadJpaAdapter.findByOrderIds(orderIds);
+
+        // Assert
+        assertAll("Verificación de persistencia y mapeo",
+                () -> assertFalse(result.isEmpty(), "La lista no debería estar vacía"),
+                () -> assertEquals(1, result.size(), "Debería haber un elemento mapeado"),
+                () -> verify(trazabilidadRepository).findByOrderIdInOrderByDateAsc(orderIds),
+                () -> verify(trazabilidadEntityMapper).toModel(any())
+        );
     }
 
 }

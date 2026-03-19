@@ -43,6 +43,7 @@ dependencies {
 
 	// MongoDB
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+	testImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.4.11'
 
 	// Swagger / OpenAPI
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0'
